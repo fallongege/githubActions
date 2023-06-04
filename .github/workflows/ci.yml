@@ -31,10 +31,10 @@ jobs:
           terraform_version: 1.3.0
           
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: arn:aws:iam::538672900635:role/gha_oidc_assume_role
-          role-session-name: samplerolesession
+          role-to-assume: arn:aws:iam::538672900635:role/Github-actions-role
+          role-session-name: gha_oidc_assume_role
           aws-region: ${{ env.AWS_REGION }}
       
       - name: Terraform Init
