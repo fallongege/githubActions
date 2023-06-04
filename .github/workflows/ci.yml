@@ -9,10 +9,6 @@ on:
       - main
 env:
   aws_region : "us-east-1"
-# permission can be added at job level or workflow level    
-permissions:
-      id-token: write   # This is required for requesting the JWT through OIDC
-      contents: read    # This is required for actions/checkout
 jobs:
   TerraformPlan:
     runs-on: ubuntu-latest
