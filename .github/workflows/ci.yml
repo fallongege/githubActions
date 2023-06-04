@@ -20,16 +20,6 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v3
       
-      # Hello from AWS: WhoAmI
-      - name: Sts GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
-        
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.3.0
-          
       - name: Configure AWS Credentials for terraformer-read-only Staging
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -37,6 +27,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.aws_region }}
           role-skip-session-tagging: true
+      
+      
+       # Hello from AWS: WhoAmI
+      - name: Sts GetCallerIdentity
+        run: |
+          aws sts get-caller-identity
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.0
       
       - name: Terraform Init
         id: init
